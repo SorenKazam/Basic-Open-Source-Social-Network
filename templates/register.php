@@ -1,21 +1,27 @@
-<h2>Register</h2>
-<form method="post" action="index.php?page=register_process">
-    <label for="name">Name: </label>
-    <input type="text" name="name" id="name">
+<?php require_once 'header.php'; ?>
 
-    <label for="username">Username: </label>
-    <input type="text" name="username" id="username">
+<div class="container">
+    <h2>Register</h2>
+    <form method="post" action="index.php?page=register_process">
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name">
 
-    <label for="email">Email: </label>
-    <input type="email" name="email" id="email">
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username">
 
-    <label for="password">Password: </label>
-    <input type="password" name="password" id="password">
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email">
 
-    <label for="confirm_password">Confirm Password: </label>
-    <input type="password" name="confirm_password" id="confirm_password">
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password">
 
-    <button type="reset">Reset fields</button>
-    <button type="submit">Register</button>
-    <a href="?page=login">Login</a>
-</form>
+        <label for="confirm_password">Confirm Password: </label>
+        <input type="password" name="confirm_password" id="confirm_password">
+
+        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="reset" class="btn btn-danger">Reset fields</button>
+        <p>Already have an account? <a href="?page=login">login</a> here</p>
+    </form>
+</div>
+
+<?php require_once 'footer.php'; ?>
