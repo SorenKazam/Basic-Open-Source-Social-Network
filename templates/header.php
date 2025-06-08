@@ -1,3 +1,20 @@
+<?php
+
+/* CATCHING ERROR MESSAGES FROM THE URL */
+if (isset($_GET['error'])) {
+    $errorMsg = $_GET['error'];
+
+    switch ($errorMsg) {
+        case 'pswdDontMatch':
+            $errorMsg = 'Passwords do not match';
+            break;
+
+        default:
+            $errorMsg = 'Unknow error';
+            break;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,3 +29,12 @@
 </head>
 
 <body>
+
+    <!-- FOR THE ERROR MESSAGES -->
+    <?php if (isset($_GET['error'])): ?>
+        <div class="container">
+            <div class="alertBox">
+                <?php echo "⚠️" . $errorMsg; ?>
+            </div>
+        </div>
+    <?php endif; ?>

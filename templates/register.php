@@ -1,8 +1,7 @@
 <?php require_once 'header.php'; ?>
-
 <div class="container">
     <h2>Register</h2>
-    <form method="post" action="index.php?page=register_process">
+    <form method="post" action="../modules/user/register_process.php">
         <label for="name">Name: </label>
         <input type="text" name="name" id="name">
 

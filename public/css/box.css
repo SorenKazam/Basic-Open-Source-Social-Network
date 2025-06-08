@@ -1,0 +1,28 @@
+.box {
+  border: 1px solid blue;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.205);
+}
+
+.box-title {
+  background-color: blue;
+  color: white;
+  padding: 0px 10px;
+}
+
+.debugBox {
+  background-color: #f0f0f0;
+  width: 100%;
+  border: 1px solid palevioletred;
+  padding: 15px 20px;
+}
+
+.alertBox {
+  background-color: #f8d7da;
+  color: #793146;
+  border: 1px solid #f1aeb5;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 10px 15px;
+}
