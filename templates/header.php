@@ -11,7 +11,21 @@ if (isset($_GET['message'])) {
         case 'emptyFields':
             $urlMsg = 'Please fill in all fields';
             break;
-
+        case 'userExists':
+            $urlMsg = 'User already exists';
+            break;
+        case 'registerSuccess':
+            $urlMsg = 'Registration successful';
+            break;
+        case 'registerFail':
+            $urlMsg = 'Registration failed';
+            break;
+        case 'wrongPassword':
+            $urlMsg = 'Wrong password';
+            break;
+        case 'userNotFound':
+            $urlMsg = 'User not found';
+            break;
         default:
             $urlMsg = 'Unknow error';
             break;
@@ -41,9 +55,3 @@ if (isset($_GET['message'])) {
             </div>
         </div>
     <?php endif; ?>
-
-    <!-- 
-        userExists
-        registerSuccess
-        registerFail
-    -->

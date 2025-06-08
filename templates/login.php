@@ -1,7 +1,7 @@
 <?php require_once 'header.php'; ?>
 <div class="container">
     <h2>Login</h2>
-    <form method="post" action="index.php?page=login_process">
+    <form method="post" action="../modules/user/login_process.php">
         <label for="email">Email: </label>
         <input type="email" name="email" id="email" required>
 

@@ -14,17 +14,15 @@ $frm_password = $_POST['password'];
 $frm_confirm_password = $_POST['confirm_password'];
 
 /* VERIFY IF THE FIELDS ARE FILLED */
-if (!$frm_name || !$frm_username || !$frm_email || !$frm_password || !$frm_confirm_password) {
-    header("Location: ../../public/index.php?page=register&error=emptyFields");
+if (empty($frm_name) || empty($frm_username) || empty($frm_email) || empty($frm_password) || empty($frm_confirm_password)) {
+    header("Location: ../../public/index.php?page=register&message=emptyFields");
     exit;
 }
 
 /* VERIFY IF THE PASSWORDS MATCH */
 if ($frm_password != $frm_confirm_password) {
-    header("Location: ../../public/index.php?page=register&error=pswdDontMatch");
+    header("Location: ../../public/index.php?page=register&message=pswdDontMatch");
     exit;
-} else {
-    echo "Passwords match!";
 }
 
 /* verify if username or email is already in use in db */
