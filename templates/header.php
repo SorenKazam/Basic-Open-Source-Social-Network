@@ -1,16 +1,19 @@
 <?php
 
 /* CATCHING ERROR MESSAGES FROM THE URL */
-if (isset($_GET['error'])) {
-    $errorMsg = $_GET['error'];
+if (isset($_GET['message'])) {
+    $urlMsg = $_GET['message'];
 
-    switch ($errorMsg) {
+    switch ($urlMsg) {
         case 'pswdDontMatch':
-            $errorMsg = 'Passwords do not match';
+            $urlMsg = 'Passwords do not match';
+            break;
+        case 'emptyFields':
+            $urlMsg = 'Please fill in all fields';
             break;
 
         default:
-            $errorMsg = 'Unknow error';
+            $urlMsg = 'Unknow error';
             break;
     }
 }
@@ -31,10 +34,16 @@ if (isset($_GET['error'])) {
 <body>
 
     <!-- FOR THE ERROR MESSAGES -->
-    <?php if (isset($_GET['error'])): ?>
+    <?php if (isset($_GET['message'])): ?>
         <div class="container">
             <div class="alertBox">
-                <?php echo "⚠️" . $errorMsg; ?>
+                <?php echo "⚠️" . $urlMsg; ?>
             </div>
         </div>
     <?php endif; ?>
+
+    <!-- 
+        userExists
+        registerSuccess
+        registerFail
+    -->

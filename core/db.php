@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__ . 'config.php';
+/* GETTING DB CONFIGURATION  */
+require_once "config.php";
 
 /* connecting to the db */
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
