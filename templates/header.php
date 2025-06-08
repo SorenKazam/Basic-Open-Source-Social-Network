@@ -1,5 +1,7 @@
 <?php
 
+include_once "../core/session.php";
+
 /* CATCHING ERROR MESSAGES FROM THE URL */
 if (isset($_GET['message'])) {
     $urlMsg = $_GET['message'];

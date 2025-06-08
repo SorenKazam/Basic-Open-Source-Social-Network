@@ -3,14 +3,15 @@
 /* defining the page */
 $route = $_GET['page'] ?? 'login';
 
-if (!isset($_SESSION['user_id']) && !in_array($route, ['login', 'register'])) {
+/* THIS IS CAUSING WEBSITE TO LOOP CRASH, FIX LATER */
+/* if (!isset($_SESSION['user_id']) && !in_array($route, ['login', 'register'])) {
     header('Location: index.php?page=login');
-}
+} */
 
 switch ($route) {
     case 'home':
         $pageTitle = "Home";
-        include "../modules/post/feed.php";
+        include "../templates/home.php";
         break;
     case 'login':
         $pageTitle = "Login";

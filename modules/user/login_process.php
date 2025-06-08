@@ -35,6 +35,19 @@ if ($result->num_rows === 1) {
         $_SESSION['email'] = $user['email'];
         $_SESSION['username'] = $user['username'];
 
+        /* REMEMBER ME */
+        if (isset($_POST['remember_me']) && $_POST['remember_me'] == 1) {
+            /* GENERATE SAFE TOKEN */
+            $token = bin2hex(random_bytes(32));
+
+            /* SAVE THE TOKEN IN THE DATA BASE */
+            $stmt = $conn->prepare("INSERT INTO user_tokens (user_id, token, expires_at) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 30 DAY))");
+            $stmt->execute([$user['id'], $token]);
+
+            /* CREATE COOKIE WITH 30 DAYS EXPIRATION */
+            setcookie('remember_token', $token, time() + (86400 * 30), "/", "", false, true);
+        }
+
         /* REDIRECT TO HOME */
         header("Location: ../../public/index.php?page=home");
         exit;
