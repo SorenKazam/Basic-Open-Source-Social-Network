@@ -18,8 +18,12 @@ if (!in_array($page, ['login', 'register'])):
             <a href="?page=login" style="color: red;">Login</a>
 
             <!-- SEARCH USER -->
-            <form action="index.php?page=search" method="get">
-                <input type="text" name="query" id="search" placeholder="Pesquisar utilizador...">
+            <form action="index.php" method="get">
+                <!-- diz ao router que é a página de pesquisa -->
+                <input type="hidden" name="page" value="search">
+
+                <!-- texto que o utilizador digita -->
+                <input type="text" name="q" id="search" placeholder="Pesquisar utilizador…">
                 <button type="submit" class="btn btn-primary">Search</button>
             </form>
         </div>

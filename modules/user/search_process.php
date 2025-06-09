@@ -1,25 +1,24 @@
 <?php
-
-/* DATABSE CONFIG */
-require_once __DIR__ . "/../../core/db.php";
-
-/* CHECKS IF THERE IS ANY QUERY TERM */
-if (!isset($_GET['query']) || trim($_GET['query']) === '') {
-    echo "<p>Please fill the search input.</p>";
+if (!isset($_GET['q']) || trim($_GET['q']) === '') {
+    echo "<p>Por favor insere algo para pesquisar.</p>";
     return;
 }
 
-/* SAVES THE QUERY TERM */
-$query = trim($_GET['query']);
+$q = trim($_GET['q']);
+require_once BASE_PATH . '/core/db.php';
 
-/* GO TO THE DATABSE LOOKING FOR THE USER WITH THAT USERNAME */
 $stmt = $conn->prepare("SELECT username FROM users WHERE username LIKE ?");
-$stmt->execute(["%$query%"]);
+$stmt->bind_param("s", $param);
+$param = "%$q%";
+$stmt->execute();
 
-/* TO DO: I CAN'T USE FETCHALL() */
-/* $results = $stmt->fetchAll(); */
+$result = $stmt->get_result();
+$results = [];
 
-/* RESULTS */
+while ($row = $result->fetch_assoc()) {
+    $results[] = $row;
+}
+
 if (count($results) === 0) {
     echo "<p>Nenhum utilizador encontrado.</p>";
 } else {
