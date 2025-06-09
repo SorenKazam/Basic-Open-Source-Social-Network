@@ -1,0 +1,40 @@
+nav {
+  padding: 10px;
+}
+
+nav > .container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(243, 148, 59);
+  padding: 10px;
+  border-radius: 20px;
+}
+
+nav > .container > div.links {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+nav > .container > form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  margin: 0px;
+}
+
+nav > .container > form > input {
+  display: inline-block;
+  width: auto;
+  margin: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+nav > .container > form > button[type="submit"] {
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
