@@ -20,5 +20,6 @@ if (isset($_COOKIE['remember_token'])) {
     // $stmt->execute([$_COOKIE['remember_token']]);
 }
 
+/* REDIRECT USER TO THE LOGIN PAGE */
 header("Location: ../../public/index.php?page=login");
 exit;

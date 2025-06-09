@@ -1,4 +1,5 @@
-<?php require_once 'header.php'; ?>
+<?php require_once __DIR__ . '/../components/header.php'; ?>
+<!-- REGISTRATION PAGE -->
 <div class="container">
     <h2>Register</h2>
     <form method="post" action="../modules/user/register_process.php">
@@ -23,4 +24,4 @@
     </form>
 </div>
 
-<?php require_once 'footer.php'; ?>
+<?php require_once __DIR__ . '/../components/footer.php'; ?>

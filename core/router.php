@@ -28,6 +28,14 @@ switch ($route) {
         $pageTitle = "Register";
         include "../templates/register.php";
         break;
+    case 'profile':
+        $pageTitle = "Profile";
+        include "../templates/profile.php";
+        break;
+    case 'search':
+        $pageTitle = "Search";
+        include "../templates/search.php";
+        break;
 
     // in case page not found
     default:

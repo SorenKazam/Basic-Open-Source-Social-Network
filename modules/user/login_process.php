@@ -52,10 +52,14 @@ if ($result->num_rows === 1) {
         header("Location: ../../public/index.php?page=home");
         exit;
     } else {
+
+        /* IS PASSWORD IS WRONG */
         header("Location: ../../public/index.php?page=login&message=wrongPassword");
         exit;
     }
 } else {
+
+    /* IF THERE IS NO USER WITH THIS EMAIL */
     header("Location: ../../public/index.php?page=login&message=userNotFound");
     exit;
 }

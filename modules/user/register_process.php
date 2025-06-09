@@ -32,7 +32,7 @@ $stmt->bind_param("ss", $frm_username, $frm_email);
 $stmt->execute();
 $stmt->store_result();
 
-
+/* IF THERE IS ANY USER WITH THE SAME USERNAME OR EMAIL */
 if ($stmt->num_rows > 0) {
     header("Location: ../../public/index.php?page=register&message=userExists");
     exit;
@@ -48,9 +48,11 @@ $stmt->bind_param("ssss", $frm_name, $frm_username, $frm_email, $hashed_password
 
 /* REDIRECT TO LOGIN PAGE */
 if ($stmt->execute()) {
+    /* IF REGISTRATION SUCCESSFUL */
     header("Location: ../../public/index.php?page=login&message=registerSuccess");
     exit;
 } else {
+    /* IF THERE IS ANY PROBLEM WITH REGISTRATION */
     header("Location: ../../public/index.php?page=register&message=registerFail");
     exit;
 }

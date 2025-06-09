@@ -1,5 +1,6 @@
 <?php
 
+/* START SESSION */
 include_once "../core/session.php";
 
 /* CATCHING ERROR MESSAGES FROM THE URL */
@@ -48,7 +49,8 @@ if (isset($_GET['message'])) {
 </head>
 
 <body>
-
+    <!-- NAVIGATION BAR -->
+    <?php include_once __DIR__ . "/navbar.php"; ?>
     <!-- FOR THE ERROR MESSAGES -->
     <?php if (isset($_GET['message'])): ?>
         <div class="container">
