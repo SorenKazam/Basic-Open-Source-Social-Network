@@ -18,6 +18,7 @@ if (isset($_GET['message'])) {
             $urlMsg = 'User already exists';
             break;
         case 'registerSuccess':
+            /* TO DO: THIS SHOULD BE GREEN! */
             $urlMsg = 'Registration successful';
             break;
         case 'registerFail':
