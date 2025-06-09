@@ -1,12 +1,4 @@
 <?php require_once 'header.php'; ?>
-<?php
-
-/* IF THERE IS A SESSION TAKE USER TO THE HOME PAGE */
-if (isset($_SESSION)) {
-    header("Location: ../public/index.php?page=home");
-}
-
-?>
 <div class="container">
     <h2>Login</h2>
     <form method="post" action="../modules/user/login_process.php">
