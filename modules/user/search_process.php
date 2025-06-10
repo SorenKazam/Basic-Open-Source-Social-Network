@@ -20,7 +20,7 @@ while ($row = $result->fetch_assoc()) {
 }
 
 if (count($results) === 0) {
-    echo "<p>Nenhum utilizador encontrado.</p>";
+    echo "<p>No results for: " . $q . ".</p>";
 } else {
     echo "<ul>";
     foreach ($results as $user) {

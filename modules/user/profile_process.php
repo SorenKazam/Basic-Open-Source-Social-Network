@@ -30,3 +30,16 @@ if ($result->num_rows === 0) {
     /* getting the user data */
     $user = $result->fetch_assoc();
 }
+
+/* VERIFY IF SESSION USER IS FOLLOWING THE PROFILE USER */
+$isFollowing = false; // default value
+
+$sqlCheckFollowing = "SELECT * FROM followers WHERE follower_id = ? AND following_id = ?";
+$stmtCheckFollowing = $conn->prepare($sqlCheckFollowing);
+$stmtCheckFollowing->bind_param("ii", $_SESSION['user_id'], $profileId);
+$stmtCheckFollowing->execute();
+$resultCheckFollowing = $stmtCheckFollowing->get_result();
+
+if ($resultCheckFollowing->num_rows > 0) {
+    $isFollowing = true; // if the user is following the profile user
+}
