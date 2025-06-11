@@ -9,8 +9,9 @@
         <label for="password">Password: </label>
         <input type="password" name="password" id="password" required>
 
+        <!-- TO DO: Add a checkbox for "Remember me" and save session cookie in the db -->
         <label>
-            <input type="checkbox" name="remember_me" value="1">
+            <input type="checkbox" name="remember_me" value="1" disabled>
             Remember me
         </label>
 
