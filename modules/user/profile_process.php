@@ -43,3 +43,9 @@ $resultCheckFollowing = $stmtCheckFollowing->get_result();
 if ($resultCheckFollowing->num_rows > 0) {
     $isFollowing = true; // if the user is following the profile user
 }
+
+/* FOLLOWING AND FOLLOWERS COUNTERS */
+$stmtCounterFollowers = $conn->prepare("SELECT COUNT(*) FROM followers WHERE following_id = ?");
+$stmtCounterFollowers->bind_param("i", $profileId);
+$stmtCounterFollowers->execute();
+$resultCounterFollowers = $stmtCounterFollowers->get_result()->fetch_assoc();

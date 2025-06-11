@@ -1,18 +1,23 @@
 .box {
   border: 1px solid #f08763;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 20px 20px 0px 0px;
   box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.205);
 }
 
 .box-title {
   background-color: #f08763;
   color: white;
-  padding: 0px 10px;
+  padding: 5px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+/* REMOVING THE DEFAULT MARGIN FROM THE TITLES IN THE BOX TITLE */
+.box-title > h1 {
+  margin: 0px;
 }
 
 .box-content {

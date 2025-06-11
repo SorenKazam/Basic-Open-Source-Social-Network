@@ -35,13 +35,62 @@
             <?php endif; ?>
         </div>
         <div class="box-content">
-            <!-- IF USER NOT FOUND -->
-            <?php if (is_null($user)): ?>
-                <p>Utilizador não encontrado.</p>
-            <?php else: ?>
-                <p>Bio: <?= htmlspecialchars($user['bio'] ?? 'Este utilizador ainda não escreveu uma bio.') ?></p>
-                <p>Membro desde: <?= date('d/m/Y', strtotime($user['created_at'])) ?></p>
-            <?php endif; ?>
+            <div class="profile">
+                <!-- IF USER NOT FOUND -->
+                <?php if (is_null($user)): ?>
+                    <p>Utilizador não encontrado.</p>
+                <?php else: ?>
+                    <!-- USER INFORMATION -->
+                    <!-- PFP -->
+                    <img src="https://picsum.photos/200/300" alt="Profile picture" class="profile-picture">
+                    <!-- NUMBER OF FOLLOWING AND FOLLOWERS -->
+                    <p>21 FOLLOWING 30 FOLLOWERS</p>
+                    <!-- USER BIO -->
+                    <p>Bio: <?= htmlspecialchars($user['bio'] ?? 'Este utilizador ainda não escreveu uma bio.') ?></p>
+                    <!-- USER DATE OF CREATION -->
+                    <p>Membro desde: <?= date('d/m/Y', strtotime($user['created_at'])) ?></p>
+            </div>
+            <!-- PROFILE NAVIGATION -->
+            <nav class="profile-navigation" id="profile-navigation">
+                <a href="index.php?page=profile&menu=photos">Photos</a>
+                <a href="index.php?page=profile&menu=followers">Followers</a>
+                <a href="index.php?page=profile&menu=following">Following</a>
+                <!-- ONLY SHOW SETTINGS BUTTON IF THE USER IS SESSION USER -->
+                <?php if ($isOwnProfile): ?>
+                    <a href="index.php?page=profile&menu=settings">Settings</a>
+                <?php endif; ?>
+            </nav>
+
+            <!-- PROFILE NAVIGATION PAGES -->
+            <?php
+                    if (isset($_GET['menu'])) {
+                        $profileMenu = $_GET['menu'];
+
+                        if (!isset($_GET['menu'])) {
+                            $profileMenu = 'photos';
+                        }
+
+                        switch ($profileMenu) {
+                            case 'followers':
+                                include_once '../modules/user/profile/followers_process.php';
+                                break;
+                            case 'following':
+                                include_once '../modules/user/profile/following_process.php';
+                                break;
+                            case 'photos':
+                                include_once '../modules/user/profile/photos_process.php';
+                                break;
+                            case 'settings':
+                                include_once '../modules/user/profile/settings_process.php';
+                                break;
+
+                            default:
+                                include_once '../modules/user/profile/photos_process.php';
+                                break;
+                        }
+                    }
+            ?>
+        <?php endif; ?>
         </div>
     </div>
 </div>
