@@ -52,54 +52,39 @@
             </div>
             <!-- PROFILE NAVIGATION -->
             <nav class="profile-navigation" id="profile-navigation">
-                <a href="index.php?page=profile&menu=photos">Photos</a>
-                <a href="index.php?page=profile&menu=followers">Followers</a>
-                <a href="index.php?page=profile&menu=following">Following</a>
+                <a href="index.php?page=profile&id=<?php echo $user['id']; ?>&menu=photos">Photos</a>
+                <a href="index.php?page=profile&id=<?php echo $user['id']; ?>&menu=followers">Followers</a>
+                <a href="index.php?page=profile&id=<?php echo $user['id']; ?>&menu=following">Following</a>
                 <!-- ONLY SHOW SETTINGS BUTTON IF THE USER IS SESSION USER -->
                 <?php if ($isOwnProfile): ?>
-                    <a href="index.php?page=profile&menu=settings">Settings</a>
+                    <a href="index.php?page=profile&id=<?php echo $user['id']; ?>&menu=settings">Settings</a>
                 <?php endif; ?>
             </nav>
 
             <!-- PROFILE NAVIGATION PAGES -->
             <?php
-                    if (isset($_GET['menu'])) {
-                        $profileMenu = $_GET['menu'];
+                    $profileMenu = $_GET['menu'] ?? 'photos'; // se não estiver definido, assume 'photos'
 
-                        if (!isset($_GET['menu'])) {
-                            $profileMenu = 'photos';
-                        }
-
-                        switch ($profileMenu) {
-                            case 'followers':
-                                include_once '../modules/user/profile/followers_process.php';
-                                break;
-                            case 'following':
-                                include_once '../modules/user/profile/following_process.php';
-                                break;
-                            case 'photos':
-                                include_once '../modules/user/profile/photos_process.php';
-                                break;
-                            case 'settings':
-                                include_once '../modules/user/profile/settings_process.php';
-                                break;
-
-                            default:
-                                include_once '../modules/user/profile/photos_process.php';
-                                break;
-                        }
+                    switch ($profileMenu) {
+                        case 'followers':
+                            include_once __DIR__ . '/profile/followers.php';
+                            break;
+                        case 'following':
+                            include_once __DIR__ . '/profile/followers.php';
+                            break;
+                        case 'photos':
+                            include_once __DIR__ . '/profile/photos.php';
+                            break;
+                        case 'settings':
+                            include_once __DIR__ . '/profile/settings.php';
+                            break;
+                        default:
+                            include_once __DIR__ . '/profile/photos.php';
+                            break;
                     }
             ?>
-        <?php endif; ?>
         </div>
+    <?php endif; ?>
     </div>
 </div>
 <?php require_once BASE_PATH . '/components/footer.php'; ?>
-
-<!-- 
-
-
-            <form action="index.php" method="get">
-                diz ao router que é a página de pesquisa
-                <input type="hidden" name="page" value="search">
--->

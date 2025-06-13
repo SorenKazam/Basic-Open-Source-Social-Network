@@ -52,6 +52,11 @@ if (isset($_GET['message'])) {
             $urlMsg = 'Failed to follow';
             $messageEmoji = '⚠️';
             break;
+        case 'profileupdated':
+            $urlMsg = 'Profile updated successfully!';
+            $messageType = 'success';
+            $messageEmoji = '✅';
+            break;
         default:
             $urlMsg = 'Unknow error';
             $messageEmoji = '⚠️';
