@@ -57,6 +57,14 @@ if (isset($_GET['message'])) {
             $messageType = 'success';
             $messageEmoji = '✅';
             break;
+        case 'usernamealreadyinuse':
+            $urlMsg = 'Username already in use';
+            $messageEmoji = '⚠️';
+            break;
+        case 'emailalreadyinuse':
+            $urlMsg = 'Email already in use';
+            $messageEmoji = '⚠️';
+            break;
         default:
             $urlMsg = 'Unknow error';
             $messageEmoji = '⚠️';

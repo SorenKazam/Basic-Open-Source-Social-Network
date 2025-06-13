@@ -22,7 +22,35 @@ $fields = [];
 $types = '';
 $values = [];
 
-/* VERIFY WHAT FIELDS WHERE FIELDS, doing it for each field */
+/* VERIFY IF USERNAME IS ALREADY IN USE */
+if (!empty($username)) {
+    $checkUsername = mysqli_prepare($conn, "SELECT id FROM users WHERE username = ? AND id != ?");
+    mysqli_stmt_bind_param($checkUsername, "si", $username, $userId);
+    mysqli_stmt_execute($checkUsername);
+    mysqli_stmt_store_result($checkUsername);
+
+    if (mysqli_stmt_num_rows($checkUsername) > 0) {
+        header("Location: ../../../public/index.php?page=profile&message=usernamealreadyinuse");
+        exit;
+    }
+
+    mysqli_stmt_close($checkUsername);
+}
+
+/* VERIFY IF EMAIL IS ALREADY IN USE */
+if (!empty($email)) {
+    $checkEmail = mysqli_prepare($conn, "SELECT id FROM users WHERE email = ? AND id != ?");
+    mysqli_stmt_bind_param($checkEmail, "si", $email, $userId);
+    mysqli_stmt_execute($checkEmail);
+    mysqli_stmt_store_result($checkEmail);
+
+    if (mysqli_stmt_num_rows($checkEmail) > 0) {
+        header("Location: ../../../public/index.php?page=profile&message=emailalreadyinuse");
+        exit;
+    }
+
+    mysqli_stmt_close($checkEmail);
+}
 
 /* NAME */
 if (!empty($name)) {
@@ -57,6 +85,9 @@ if (empty($fields)) {
     header("Location: ../../../public/index.php?page=profile&message=noprofilechanges");
     exit;
 }
+
+/* CHECK IF THERE IS OTHER USER WITH THAT USERNAME OR EMAIL (those should be unique rows!) */
+
 
 // BUILD A DYNAMIC QUERY: ex: "UPDATE users SET name = ?, email = ? WHERE id = ?"
 $sql = "UPDATE users SET " . implode(", ", $fields) . " WHERE id = ?";
